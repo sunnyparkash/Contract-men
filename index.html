@@ -9,12 +9,13 @@
     <meta name="viewport" content="width=1200">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="assets/jquery.min.js"></script>
     <!--<script src="assets/ie/shim.min.js"></script>
     <script src="assets/ie/shims_for_IE.js"></script>
     <script src="assets/ie/mutationobserver.min.js"></script>-->
     <!--<script src="//cdn.jsdelivr.net/g/mutationobserver/"></script>-->
 
-<link href="styles.0e59eb498332586c450f.bundle.css" rel="stylesheet"/></head>
+<link href="styles.926837d311cfb5ccf62c.bundle.css" rel="stylesheet"/></head>
 <style>
     .cssload-loader {
         width: 62px;
@@ -179,6 +180,10 @@
         }
     }
     
+    #root {
+        text-align: center;
+    }
+    
     #root .loading {
         margin-top: 12%;
     }
@@ -238,7 +243,25 @@
             </div>
         </ulx-root>
     </div>
+    <script>
+        $(document).ready(function() {
+            var keyCodes = [61, 107, 173, 109, 187, 189];
 
-<script type="text/javascript" src="inline.cadd32702af6cc14c0dd.bundle.js"></script><script type="text/javascript" src="polyfills.d53040393526a8633fbf.bundle.js"></script><script type="text/javascript" src="scripts.9cc8244e267c13c95bc5.bundle.js"></script><script type="text/javascript" src="vendor.0f3abd9f01929558e14e.bundle.js"></script><script type="text/javascript" src="main.d2f54ee57635bbdf74c9.bundle.js"></script></body>
+            $(document).keydown(function(event) {
+                if (event.ctrlKey == true && (keyCodes.indexOf(event.which) != -1)) {
+                    // alert('disabling zooming');
+                    event.preventDefault();
+                }
+            });
+
+            $(window).bind('mousewheel DOMMouseScroll', function(event) {
+                if (event.ctrlKey == true) {
+                    // alert('disabling zooming');
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+<script type="text/javascript" src="inline.ccfd0b37e18bb2cd2bec.bundle.js"></script><script type="text/javascript" src="polyfills.d53040393526a8633fbf.bundle.js"></script><script type="text/javascript" src="scripts.1cf9283f73e4347830f8.bundle.js"></script><script type="text/javascript" src="vendor.0f3abd9f01929558e14e.bundle.js"></script><script type="text/javascript" src="main.56ef78069e5103f0fd89.bundle.js"></script></body>
 
 </html>
