@@ -18,7 +18,9 @@
     "all": "false",
     "execute": "false",
     "skipDocs": "true",
-    "onlyDocs": "false"
+    "onlyDocs": "false",
+    "uploadDocsOnly": "true",
+    "isTestRun": "true"
   },
   "source": {
     "connection": "Server=rpc.edualaya.com;Database=ContractManager;User Id=mssdeveloper;Password=fundo@123;",
@@ -31,7 +33,7 @@
       },
       "programFolder": {
         "byId": "select  d.created_on as DateCreated,d.modified_on as datemodified,d.PRIMARY_KEY as id, d.Name from  T_DOCUMENT d where d.PRIMARY_KEY ={0} and d.PRIMARY_KEY not in({1})",
-        "subFolders": "select d.created_on as DateCreated,d.modified_on as datemodified,d.TYPE_IID as typeid, [DOCUMENT_SIZE] as SizeInByte,d.PRIMARY_KEY as id, d.Name,dc.DATA as data,dc.[DOCUMENT_TYPE] as DocType from T_DOCUMENT d  left join [dbo].[J_DOCU_CONTENT] dc on dc.primary_key=d.CONTENT_ID left join [dbo].[Y_DOCU_CONTENT_TYPE] dct on dct.primary_key=d.content_type_id where [PARENT_FOLDER_ID]={0} and TYPE_IID='L' and d.PRIMARY_KEY not in({1})"
+        "subFolders": "select d.created_on as DateCreated,d.modified_on as datemodified,d.TYPE_IID as typeid, [DOCUMENT_SIZE] as SizeInByte,d.PRIMARY_KEY as id, d.Name,dc.DATA as data,dc.[DOCUMENT_TYPE] as DocType from T_DOCUMENT d  left join [dbo].[J_DOCU_CONTENT] dc on dc.primary_key=d.CONTENT_ID left join [dbo].[Y_DOCU_CONTENT_TYPE] dct on dct.primary_key=d.content_type_id where [PARENT_FOLDER_ID]={0} and TYPE_IID='D'"
       },
       "documents": {
          "byOldId": "select   d.Name,dc.DATA as data, dc.[DOCUMENT_TYPE] as DocType from  T_DOCUMENT d  join [dbo].[J_DOCU_CONTENT] dc on dc.primary_key=d.CONTENT_ID where  d.PRIMARY_KEY={0}",
