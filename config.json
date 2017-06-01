@@ -1,0 +1,101 @@
+{
+  "target": {
+    "connection": "Server=10.0.0.7;Database=ContractManager_qa_Test;User Id=mssdeveloper;Password=fundo@123;"
+  },
+
+  "s3bucket": {
+    "AccessKey": "AKIAJNEU5XSGR7HKEQRA",
+    "SecretKey": "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",
+    "BucketName": "contract-manager",
+    "RootUrl": "https://s3.amazonaws.com",
+  },
+  "proxy": {
+    "Port": "",
+    "Host": "",
+    "IsEnabled": "True"
+  },
+  "args": {
+    "all": "false",
+    "execute": "false",
+    "skipDocs": "true",
+    "onlyDocs": "false"
+  },
+  "source": {
+    "connection": "Server=rpc.edualaya.com;Database=ContractManager;User Id=mssdeveloper;Password=fundo@123;",
+    "selects": {
+      "Programs": "select fp.PROJECT_ID$ as    Id,ti.Contact_id as paymentOfficeKey,p.DOCUMENT_FOLDER_ID as FolderId,p.CREATED_BY_ID as createdByKey,p.MODIFIED_BY_ID as modifiedByKey, p.NUMBER_STRING as ProgramNumber,   p.NAME as name,  P.CREATED_ON as  DateCreated, p.Modified_On as DateModified, p.IS_CLOSED as IsClosed, p.CLOSED_ON as DisabledOn, BASEPERIODSTARTDATE, BASEPERIODENDDATE, CONTRACTIDNUM as contractidnumber, RFPNum as RFPNumber, SUBCONTRACTNUM as SubContractNumber, PRIMECONRACTNUM as PrimeContractNumber, AWARDDATE, FINANCIALCONTROLDATA as ResponsibilityCenter, SPECIALBILLINGPROVISIONS as SpecialBillingProvisions, AUTHORIZEDUSERS as AuthrizedUsers, ORIGINALESTLIFECYCLECONTVALUE as OriginalEstimatedLifeCycleContractValue, ContractOrdering.Name as ContractOrdering, MAXIMUMTERMENDDATE as MaxTermStartDate, MAXIMUMTERMSTARTDATE as MaxTermEndDate, LETTERCONTRACTNUM as LETTERCONTRACTNUMber, CURRENTTERMEXPIRESON as CurrentTermExpiryDate, cageCode.name as cagecode, AWARDBASIS.name as awardbasis, NEXTNOTICEOFINTENTDUEBY as NextNoticeDueBy, Ph.Name as Phase, VALIDEXERCISEREQUIRES as ExerciseRequired, CORPORATEDUNS.name as CORPORATEDUNS, Role.Name as Role, CORPORATELOCATION.Name as CORPORATELOCATION, SHOWCASECURENOTICE as ShowCauseCoreNotice, SHOWCAUSECURENOTICEDATE as ShowCauseCoreNoticeDate, Actions as Actions, IFTASKDELIVERYORDERSTHEN.name as Competition from e_fepr FP join T_PROJECT P on fp.PROJECT_ID$=p.PRIMARY_KEY left join Y_DETAIL_LOOKUP_ITEM cageCode on fp.CAGECODE=cageCode.primary_key left join Y_DETAIL_LOOKUP_ITEM AWARDBASIS on fp.AWARDBASIS=AWARDBASIS.primary_key left join Y_DETAIL_LOOKUP_ITEM CORPORATEDUNS on fp.CORPORATEDUNS=CORPORATEDUNS.primary_key left join Y_DETAIL_LOOKUP_ITEM CORPORATELOCATION on fp.CORPORATELOCATION=CORPORATELOCATION.primary_key left join Y_DETAIL_LOOKUP_ITEM Role on fp.Role=Role.primary_key left join Y_DETAIL_LOOKUP_ITEM CONTRACTORDERING on fp.CONTRACTORDERING=CONTRACTORDERING.primary_key left join [dbo].[L_PROJ_PHASE_TYPE] Ph on p.CURRENT_PHASE_TYPE_ID=Ph.primary_key left join Y_DETAIL_LOOKUP_ITEM IFTASKDELIVERYORDERSTHEN on fp.IFTASKDELIVERYORDERSTHEN=IFTASKDELIVERYORDERSTHEN.primary_key left join T_INVOLVED ti on ti.primary_key=fp.PAYMENTOFFICE",
+      
+     "lookUpData": "select Case when t.primary_key=73 then 'AwardBasis' when t.primary_key=66 then 'CageCodes' when t.primary_key=62 then 'changeTypes' when t.primary_key=65 then 'ContractTypes' when t.primary_key=74 then 'ContractOrderings' when t.primary_key=67 then 'CorporateDunses' when t.primary_key=68 then 'CorporateLocations' when t.primary_key=69 then 'Competitions' when t.primary_key=76 then 'OrderTypes' when t.primary_key=75 then 'OrderScopes' when t.primary_key=70 then 'PerformancePlaces' when t.primary_key=63 then 'ChangeMades' when t.primary_key=79 then 'Terms' when t.primary_key=72 then 'Regulations' when t.primary_key=71 then 'ServiceOfferings' when t.primary_key=64 then 'Roles' end as entity, i.NAME, i.IS_ACTIVE as isActive, i.tree_position as treeposition from [dbo]. [Y_DETAIL_LOOKUP_ITEM] i join [dbo].[Y_DETAIL_LOOKUP_TABLE] t on i.TABLE_ID=t.PRIMARY_KEY where t.PRIMARY_KEY in(73, 66, 62, 67, 68, 69, 70, 74, 75, 76, 63, 79, 65, 71, 72,64) and i.name != 'root'",
+      "ContractTypes": {
+        "byProgramId": "select ctype.Name from [dbo].[E_COTY]  ct join Y_DETAIL_LOOKUP_ITEM  ctype on ct.CONTRACTTYPE=ctype.primary_key  join T_PROJECT P on p.PRIMARY_KEY=ct.project_id$ where p.[PARENT_ID]={0}"
+      },
+      "programFolder": {
+        "byId": "select  d.created_on as DateCreated,d.modified_on as datemodified,d.PRIMARY_KEY as id, d.Name from  T_DOCUMENT d where d.PRIMARY_KEY ={0} and d.PRIMARY_KEY not in({1})",
+        "subFolders": "select d.created_on as DateCreated,d.modified_on as datemodified,d.TYPE_IID as typeid, [DOCUMENT_SIZE] as SizeInByte,d.PRIMARY_KEY as id, d.Name,dc.DATA as data,dc.[DOCUMENT_TYPE] as DocType from T_DOCUMENT d  left join [dbo].[J_DOCU_CONTENT] dc on dc.primary_key=d.CONTENT_ID left join [dbo].[Y_DOCU_CONTENT_TYPE] dct on dct.primary_key=d.content_type_id where [PARENT_FOLDER_ID]={0} and TYPE_IID='L' and d.PRIMARY_KEY not in({1})"
+      },
+      "documents": {
+         "byOldId": "select   d.Name,dc.DATA as data, dc.[DOCUMENT_TYPE] as DocType from  T_DOCUMENT d  join [dbo].[J_DOCU_CONTENT] dc on dc.primary_key=d.CONTENT_ID where  d.PRIMARY_KEY={0}",
+        "byFolderId": "select d.CREATED_BY_ID as createdByKey,d.created_on as DateCreated,d.modified_on as datemodified,d.TYPE_IID as typeid, [DOCUMENT_SIZE] as SizeInByte,d.PRIMARY_KEY as id, d.Name,dc.DATA as data,dc.[DOCUMENT_TYPE] as DocType from  T_DOCUMENT d  left join [dbo].[J_DOCU_CONTENT] dc on dc.primary_key=d.CONTENT_ID left join [dbo].[Y_DOCU_CONTENT_TYPE] dct on dct.primary_key=d.content_type_id where [PARENT_FOLDER_ID]={0} and TYPE_IID='D' and d.PRIMARY_KEY not in({1})"
+      },
+      "docsToMove": "select top 1 url,oldid,id,name,p.name as foldername from documents d join programfolders p on p.id=d.folder_id where url like '%api/legacy%'",
+      "programHistories": {
+        "byProgramId": "select Created_By_Id as CreatedByKey,MODIFIED_BY_ID as ModifiedByKey,Text as Discription,CREATED_ON as DateCreated,MODIFIED_ON datemodified,OBJECT_ID as ProjId  from [dbo].[T_HISTORY]  where OBJECT_ID={0}"
+      },
+      "contacts": "select DEFAULT_ADDRESS_ID as addressKey,phone.[PHONE_STRING] as phone,email.[EMAIL_STRING] as email, NUMBER_STRING as NumberString,SS_OR_TAX_NUMBER_STRING as SsOrTexNumber, t.primary_key as Id, t.CREATED_ON as dateCreated ,t.Modified_ON as dateModified,t.MODIFIED_BY_ID as modifiedByKey, t.CREATED_BY_ID as createdByKey,t.Name,t.First_Name as FirstName,t.middle_name as middleName, oc.name as category,Company_id as companykey,t.[TYPE_IID] as TypeId from t_contact t join Y_OBJ_CATEGORY oc on oc.primary_key=t.default_category_id left join [J_CONT_EMAIL] email on email.primary_key=t.DEFAULT_EMAIL_ID left join J_CONT_PHONE phone on phone.primary_key=t.[DEFAULT_PHONE_ID] order by t.company_id",
+      "projectRelation": "select i.primary_key,i.name as AffiliationType,pj.right_project_id as AffiliatedProjId ,pj.left_project_id as ProjId from [dbo].[J_PROJ_RELATION] pj  join [dbo].[L_PROJ_RELATION_TYPE]  i on pj.type_id=i.primary_Key",
+      "Users": "select  i.primary_key as Id, i.PASSWORD,i.username,i.is_active as isActive, i.CREATED_ON as datecreated,i.Modified_ON as datemodified, i.MODIFIED_BY_ID as modifiedbykey,i.CREATED_BY_ID as createdbykey,i.CONTACT_ID as contactKey from Y_User i",
+      "Teco": {
+        "byProgramId": "select Date,description,term.name as term  from [dbo].[E_TECO] tc join T_PROJECT p on p.primary_key=tc.project_id$ left join Y_DETAIL_LOOKUP_ITEM term on term.primary_key=tc.terms where p.PARENT_ID={0}"
+      },
+      "programOwners": {
+        "byProgramId": "select at.name as role,pa.ASSIGNED_ON as assignedOn,pa.unassigned_on as UnassignedOn, pa.USER_ID as userUniqKey from [J_PROJ_ASSIGNEE] pa  join [dbo].[L_PROJ_ASSIGNEE_TYPE] at on at.primary_key = pa.type_id where  at.tree_position like '%fepr%' and at.parent_id is not null and pa.project_id={0}"
+      },
+      "addresses": "select [PRIMARY_KEY] as id,City,[COUNTRY_ITEM_ID] as countryKey,[STREET],[STATE],[POSTAL_CODE] as PostalCode,[CONTACT_ID] as contactKey from [dbo].[J_CONT_ADDRESS]",
+      "Countries": "select [PRIMARY_KEY] as id,[NAME] from [dbo].[L_COUNTRY_ITEM] where name<>'Root'",
+      "projPhaseTypes": "select distinct name,'ProgramPhaseTypes' as entity from [dbo].[L_PROJ_PHASE_TYPE]",
+      "programOwnerTypes": "select 'ProgramRoles' as entity,Name,is_active as isActive from [dbo].[L_PROJ_ASSIGNEE_TYPE] where tree_position like '%fepr%' and parent_id is not null",
+      "affiliationTypes": "select 'Affiliationtypes' as Entity,Name,Is_Active as IsActive,TREE_POSITION as TreePosition from [dbo].[L_PROJ_RELATION_TYPE] where NAME <>'Root'",
+      "PerformancePlaces": {
+        "byProgramId": "select pp.Name from [dbo].[E_PRPP]  ct join Y_DETAIL_LOOKUP_ITEM  pp on ct.PLACES=pp.primary_key join T_PROJECT P on p.PRIMARY_KEY=ct.project_id$ where p.[PARENT_ID]={0}"
+      },
+      "ServiceOfferings": {
+        "byProgramId": "select so.Name from [dbo].[E_SEOF]  ct join Y_DETAIL_LOOKUP_ITEM  so on ct.SERVICEOFFERING=so.primary_key join T_PROJECT P on p.PRIMARY_KEY=ct.project_id$ where p.[PARENT_ID]={0}"
+      },
+      "OptionPeriods": {
+        "byProgramId": "select StartDate,EndDate,Number from [dbo].E_OPPE ct join T_PROJECT P on p.PRIMARY_KEY=ct.project_id$ where p.[PARENT_ID]={0}"
+      },
+      "ContractMods": {
+        "byProgramId": "select project_id$ as id, changeType.Name as changeType,Contractmodnum as [ContractModNumber],EFFECTIVEDATE as [EffectiveDate],comments from [dbo].[E_COMO] c left join Y_DETAIL_LOOKUP_ITEM changeType on c.ChangeType=changeType.primary_key join T_PROJECT P on p.PRIMARY_KEY=c.project_id$ where p.[PARENT_ID]={0}",
+        "changeMades": "select i.NAME from E_chme c join t_project p on p.primary_key=c.project_id$ left join Y_DETAIL_LOOKUP_ITEM i on c.CHANGESMADE=i.PRIMARY_KEY where p.PARENT_ID={0}"
+      },
+      "ProcurmentRegulations": {
+        "byProgramId": "select regulation.Name as regulation,NOTES from [dbo].E_PRRE  ct join Y_DETAIL_LOOKUP_ITEM  regulation on ct.REGULATION=regulation.primary_key  join T_PROJECT P on p.PRIMARY_KEY=ct.project_id$ where p.[PARENT_ID]={0}"
+      },
+      "ProgramContacts": {
+        "byProgramId": [
+          "select  i.Contact_Id as contactKey,'Awarding Agency' as ContactType  from E_fepr FP join T_involved I on fp.AWARDINGAGENCY=i.primary_key  where FP.PROJECT_ID$ = {0}",
+          "select i.Contact_Id as contactKey,'Department of Records Coordinator (DRC)' as ContactType  from E_fepr FP join T_involved I on fp.DEPTRECORDCOORDINATOR=i.primary_key  where FP.PROJECT_ID$ = {0}",
+          "select i.Contact_Id as contactKey,'Awarding Office' as ContactType from E_fepr FP join T_involved I on fp.AWARDINGOFFICE=i.primary_key   where FP.PROJECT_ID$ = {0}",
+          "select i.Contact_Id as contactKey,'Inventoried By' as ContactType from E_fepr FP join T_involved I on fp.INVENTORIEDBY=i.primary_key   where FP.PROJECT_ID$ = {0}",
+          "select i.Contact_Id as contactKey,'Prime Contractor' as ContactType  from E_fepr FP join T_involved I on fp.PRIMECONTRACTOR=i.primary_key   where FP.PROJECT_ID$ = {0}"
+            ]
+      },
+      "Orders": {
+        "byProgramId": "select CUSTOMER.Contact_Id as Customer,SECURITYREQUIREMENTSNOTES ,SECURITYREQUIREMENTS, PAYMENTOFFICE.Contact_Id as PaymentOffice, CONTRACTADMINBACKUP.Contact_Id as ContractAdminBackup,CONTRACTADMINISTRATOR.Contact_Id as ContractAdmin,p.[MODIFIED_ON] as DateModified,p.CREATED_BY_ID as createdByKey,p.MODIFIED_BY_ID as modifiedByKey,o.project_id$ as id,p.[CREATED_ON] as DateCreated, ORDERNUM as OrderNo,RESPCENTER as RespCenter,EFFECTIVEDATE as EffactiveDate,POPFROM,POPTO, [DESCRIPTION],LIMITOFFUNDSPERCENT as LimitofFundsPercent,LIMITOFFUNDSAMOUNT as LimitofFundsAmount, LIMITOFFUNDSNOTIFICATION as LimitofFundsNotification, 1 as IsActive,PROPOSALDATE as PerposalDate, ORDERTYPE.NAME as OrderType,Scope.NAME as OrderScope from e_orde o  left join Y_DETAIL_LOOKUP_ITEM Scope on o.SCOPE=Scope.primary_key left join Y_DETAIL_LOOKUP_ITEM    ORDERTYPE on o.ORDERTYPE=ORDERTYPE.primary_key join T_PROJECT P on p.PRIMARY_KEY=o.project_id$ left join T_INVOLVED PAYMENTOFFICE on PAYMENTOFFICE.primary_key=o.PAYMENTOFFICE left join T_INVOLVED CONTRACTADMINBACKUP on CONTRACTADMINBACKUP.primary_key=o.CONTRACTADMINBACKUP left join T_INVOLVED CONTRACTADMINISTRATOR on CONTRACTADMINISTRATOR.primary_key=o.CONTRACTADMINISTRATOR left join T_INVOLVED CUSTOMER on CUSTOMER.primary_key=o.CUSTOMER where p.[PARENT_ID]={0}",
+        "ContractingOfficers": {
+          "byOrderId": "SELECT AM.CONTACT_ID as contactKey FROM T_PROJECT O JOIN Y_APPLICATION A ON A.PRIMARY_KEY = O.APPLICATION_ID JOIN Y_OBJECT_DEFINITION D ON D.PRIMARY_KEY = A.PROJ_OBJECT_DEFINITION_ID JOIN T_PROJECT AM ON AM.PARENT_ID = O.PRIMARY_KEY JOIN Y_APPLICATION AMA ON AMA.PRIMARY_KEY = AM.APPLICATION_ID JOIN Y_OBJECT_DEFINITION AMD ON AMD.PRIMARY_KEY = AMA.PROJ_OBJECT_DEFINITION_ID LEFT OUTER JOIN T_CONTACT AM_C ON AM_C.PRIMARY_KEY = AM.CONTACT_ID WHERE O.NAME = 'rob2'AND AMD.UNIQUE_CODE IN ('COOF') and o.primary_key={0}"
+        },
+        "AccountingMangers": {
+          "byOrderId": "SELECT CO.CONTACT_ID contactKey FROM T_PROJECT O JOIN Y_APPLICATION A ON A.PRIMARY_KEY = O.APPLICATION_ID JOIN Y_OBJECT_DEFINITION D ON D.PRIMARY_KEY = A.PROJ_OBJECT_DEFINITION_ID JOIN T_PROJECT CO ON CO.PARENT_ID = O.PRIMARY_KEY JOIN Y_APPLICATION COA ON COA.PRIMARY_KEY = CO.APPLICATION_ID JOIN Y_OBJECT_DEFINITION COD ON COD.PRIMARY_KEY = COA.PROJ_OBJECT_DEFINITION_ID LEFT OUTER JOIN T_CONTACT CO_C ON CO_C.PRIMARY_KEY = CO.CONTACT_ID WHERE O.NAME = 'rob2'AND COD.UNIQUE_CODE IN ('ACMA') and o.primary_key={0}"
+        }
+      },
+
+      "OrderModifications": {
+        "byOrderId": "select o.project_id$ as id,p.CREATED_BY_ID as createdByKey,p.MODIFIED_BY_ID as modifiedByKey, p.[MODIFIED_ON] as DateModified, p.[CREATED_ON] as DateCreated, ORDERMODSNUM as ModificationNo , RESPCENTER as RespCenter, EFFECTIVEDATE as EffactiveDate, POPFROM, POPTO, 1 as IsActive, PROPOSALDATE as PerposalDate, ObligatedAmount, OBLIGATEDADJUSTMENT.Name as ObligatedAmountAdjustmentType, FixedPriceAmount, FIXEDPRICEADJUSTMENT.Name as FixedPriceAmountAdjustmentType, CostAmount,COSTADJUSTMENT.Name as CostAmountAdjustmentType, FeeAmount,FEEADJUSTMENT.Name as FeeAmountAdjustmentType, ORDERTYPE.NAME as OrderType, Scope.NAME as OrderScope, changeType.name as changetype from e_ormo o left join Y_DETAIL_LOOKUP_ITEM Scope on o.SCOPE=Scope.primary_key left join Y_DETAIL_LOOKUP_ITEM OBLIGATEDADJUSTMENT on o.OBLIGATEDADJUSTMENT=OBLIGATEDADJUSTMENT.primary_key left join Y_DETAIL_LOOKUP_ITEM FIXEDPRICEADJUSTMENT on o.FIXEDPRICEADJUSTMENT=FIXEDPRICEADJUSTMENT.primary_key left join Y_DETAIL_LOOKUP_ITEM COSTADJUSTMENT on o.COSTADJUSTMENT=COSTADJUSTMENT.primary_key left join Y_DETAIL_LOOKUP_ITEM FEEADJUSTMENT on o.FEEADJUSTMENT=FEEADJUSTMENT.primary_key left join Y_DETAIL_LOOKUP_ITEM    ORDERTYPE on o.ORDERTYPE=ORDERTYPE.primary_key join T_PROJECT P on p.PRIMARY_KEY=o.project_id$ left join Y_DETAIL_LOOKUP_ITEM changeType on o.ChangeType=changeType.primary_key where p.[PARENT_ID]={0}",
+         "changeMades": "select i.NAME from E_chme c join t_project p on p.primary_key=c.project_id$ left join Y_DETAIL_LOOKUP_ITEM i on c.CHANGESMADE=i.PRIMARY_KEY where p.PARENT_ID={0}"
+           }
+    }
+  }
+
+
+}
