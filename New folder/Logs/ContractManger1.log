@@ -1,0 +1,9 @@
+2017-05-06 20:49:21,807 [19] ERROR ContractManager.Services.Common.DbLogger - Default
+Newtonsoft.Json.JsonSerializationException: Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.User_6D6CE54D4F850B2FDC9CAC445704096AF90727D5BA0CAA0EF6169836ED815A19'. Path 'ModifiedUsers'.
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.CheckForCircularReference(JsonWriter writer, Object value, JsonProperty property, JsonContract contract, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.Serialize(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.SerializeInternal(JsonWriter jsonWriter, Object value, Type objectType)
+   at ContractManager.Utilities.Common.CustomJsonSerializer.SerializeObject(Object obj, Int32 maxDepth)
+   at ContractManager.Services.Common.DbLogger.Log(Object newValues, Object oldValues, String id)
