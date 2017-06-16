@@ -1,0 +1,2 @@
+  <httpRuntime requestValidationMode="2.0" />
+        <pages validateRequest="false" />
