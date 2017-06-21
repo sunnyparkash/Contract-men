@@ -1,0 +1,93 @@
+ alter table programs add [AwardingAgency_Id] int  NULL
+ alter table programs add     [DepartmentOfRecordsCoordinator_Id] int  NULL
+  alter table programs add    [PrimeContractor_Id] int  NULL
+  alter table programs add    [InventoriedBy_Id] int  NULL
+  alter table programs add    [AwardingOffice_Id] int  NULL
+
+-- Creating foreign key on [AwardingAgency_Id] in table 'Programs'
+ALTER TABLE [dbo].[Programs]
+ADD CONSTRAINT [FK_ProgramAwardingAgency]
+    FOREIGN KEY ([AwardingAgency_Id])
+    REFERENCES [dbo].[Contacts]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProgramAwardingAgency'
+CREATE INDEX [IX_FK_ProgramAwardingAgency]
+ON [dbo].[Programs]
+    ([AwardingAgency_Id]);
+GO
+
+-- Creating foreign key on [DepartmentOfRecordsCoordinator_Id] in table 'Programs'
+ALTER TABLE [dbo].[Programs]
+ADD CONSTRAINT [FK_ProgramContact]
+    FOREIGN KEY ([DepartmentOfRecordsCoordinator_Id])
+    REFERENCES [dbo].[Contacts]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProgramContact'
+CREATE INDEX [IX_FK_ProgramContact]
+ON [dbo].[Programs]
+    ([DepartmentOfRecordsCoordinator_Id]);
+GO
+
+-- Creating foreign key on [PrimeContractor_Id] in table 'Programs'
+ALTER TABLE [dbo].[Programs]
+ADD CONSTRAINT [FK_ProgramPrimeContractor]
+    FOREIGN KEY ([PrimeContractor_Id])
+    REFERENCES [dbo].[Contacts]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProgramPrimeContractor'
+CREATE INDEX [IX_FK_ProgramPrimeContractor]
+ON [dbo].[Programs]
+    ([PrimeContractor_Id]);
+GO
+
+-- Creating foreign key on [InventoriedBy_Id] in table 'Programs'
+ALTER TABLE [dbo].[Programs]
+ADD CONSTRAINT [FK_ProgramInventoriedBy]
+    FOREIGN KEY ([InventoriedBy_Id])
+    REFERENCES [dbo].[Contacts]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProgramInventoriedBy'
+CREATE INDEX [IX_FK_ProgramInventoriedBy]
+ON [dbo].[Programs]
+    ([InventoriedBy_Id]);
+GO
+
+-- Creating foreign key on [AwardingOffice_Id] in table 'Programs'
+ALTER TABLE [dbo].[Programs]
+ADD CONSTRAINT [FK_ProgramContact1]
+    FOREIGN KEY ([AwardingOffice_Id])
+    REFERENCES [dbo].[Contacts]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProgramContact1'
+CREATE INDEX [IX_FK_ProgramContact1]
+ON [dbo].[Programs]
+    ([AwardingOffice_Id]);
+GO
+
+
+
+update p set PrimeContractor_Id=pc.Contact_Id from ProgramContacts pc join Programs p on p.Id=pc.Program_Id join ContactTypes ct on ct.Id=pc.ContactType_Id
+where ct.Name='Contractor'
+update p set DepartmentOfRecordsCoordinator_Id=pc.Contact_Id from ProgramContacts pc join Programs p on p.Id=pc.Program_Id join ContactTypes ct on ct.Id=pc.ContactType_Id
+where ct.Name='Department of Records Coordinator (DRC)'
+update p set AwardingAgency_Id=pc.Contact_Id from ProgramContacts pc join Programs p on p.Id=pc.Program_Id join ContactTypes ct on ct.Id=pc.ContactType_Id
+where ct.Name='Awarding agancy'
+update p set AwardingOffice_Id=pc.Contact_Id from ProgramContacts pc join Programs p on p.Id=pc.Program_Id join ContactTypes ct on ct.Id=pc.ContactType_Id
+where ct.Name='Awarding office'
+update p set InventoriedBy_Id=pc.Contact_Id from ProgramContacts pc join Programs p on p.Id=pc.Program_Id join ContactTypes ct on ct.Id=pc.ContactType_Id
+where ct.Name='Inventoried By'
