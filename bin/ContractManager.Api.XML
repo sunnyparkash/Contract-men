@@ -1,0 +1,1084 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ContractManager.Api</name>
+    </assembly>
+    <members>
+        <member name="M:ContractManager.Api.App_Start.RouteConfig.RegisterRoutes(System.Web.Routing.RouteCollection)">
+             <summary>
+            
+             </summary>
+             <param name="routes"></param>
+        </member>
+        <member name="T:ContractManager.Api.UnityConfig">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.UnityConfig.GetConfiguredContainer">
+            <summary>
+            Gets the configured Unity container.
+            </summary>
+        </member>
+        <member name="M:ContractManager.Api.UnityConfig.RegisterTypes(Microsoft.Practices.Unity.IUnityContainer)">
+            <summary>Registers the type mappings with the Unity container.</summary>
+            <param name="container">The unity container to configure.</param>
+            <remarks>There is no need to register concrete types such as controllers or API controllers (unless you want to
+            change the defaults), as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
+        </member>
+        <member name="T:ContractManager.Api.UnityWebApiActivator">
+            <summary>Provides the bootstrapping for integrating Unity with WebApi when it is hosted in ASP.NET</summary>
+        </member>
+        <member name="M:ContractManager.Api.UnityWebApiActivator.Start">
+            <summary>Integrates Unity when the application starts.</summary>
+        </member>
+        <member name="M:ContractManager.Api.UnityWebApiActivator.Shutdown">
+            <summary>Disposes the Unity container when the application is shut down.</summary>
+        </member>
+        <member name="T:ContractManager.Api.WebApiConfig">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.WebApiConfig.Configure(System.Web.Http.HttpConfiguration)">
+             <summary>
+            
+             </summary>
+             <param name="config"></param>
+        </member>
+        <member name="T:ContractManager.Api.Common.AuthFilter">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Common.AuthFilter.OnActionExecuting(System.Web.Mvc.ActionExecutingContext)">
+            <summary>
+            Called by the ASP.NET MVC framework before the action method executes.
+            </summary>
+            <param name="filterContext">The filter context.</param>
+        </member>
+        <member name="T:ContractManager.Api.Common.ContractMangerAuth">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:ContractManager.Api.Common.WebApiAuth">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ContractManager.Api.Common.WebApiAuth.OnActionExecuting(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            Occurs before the action method is invoked.
+            </summary>
+            <param name="actionContext">The action context.</param>
+        </member>
+        <member name="M:ContractManager.Api.Common.WebApiAuth.RedirectResponse(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            
+            </summary>
+            <param name="actionContext"></param>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.AccountsController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.AccountsController.#ctor(ContractManager.Contract.Services.IUserService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.AccountsController.Login(ContractManager.Contract.Models.UserLoginModel)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.AccountsController.ResetPassword(ContractManager.Contract.Models.PasswordChangeModel)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.AccountsController.Logout">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.AffiliationTypesController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.AffiliationTypesController.#ctor(ContractManager.Contract.Services.IAffiliationTypeService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.AffiliationTypesController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.AwardBasisController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.AwardBasisController.#ctor(ContractManager.Contract.Services.IAwardBasisService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.AwardBasisController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.CageCodesController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.CageCodesController.#ctor(ContractManager.Contract.Services.ICageCodeService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.CageCodesController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.ChangeTypesController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ChangeTypesController.#ctor(ContractManager.Contract.Services.IChangeTypeService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ChangeTypesController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.ContactsController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ContactsController.#ctor(ContractManager.Contract.Services.IContactService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ContactsController.Get(ContractManager.Contract.QueryFilters.ContactQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ContactsController.Post(ContractManager.Contract.Models.ContactModel)">
+             <summary>
+            
+             </summary>
+             <param name="model"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ContactsController.Put(System.Int32,ContractManager.Contract.Models.ContactModel)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <param name="model"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ContactsController.Delete(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.ContractModsController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ContractModsController.#ctor(ContractManager.Contract.Services.Program.IContractModService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ContractModsController.Get(ContractManager.Contract.QueryFilters.ContractModQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ContractModsController.Get(System.Int32)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ContractModsController.Post(ContractManager.Contract.Models.Program.ContractModModel)">
+             <summary>
+            
+             </summary>
+             <param name="model"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ContractModsController.Put(System.Int32,ContractManager.Contract.Models.Program.ContractModModel)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <param name="model"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ContractModsController.Delete(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.ContractOrderingsController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ContractOrderingsController.#ctor(ContractManager.Contract.Services.IContractOrderingService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ContractOrderingsController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.ContractTypesController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ContractTypesController.#ctor(ContractManager.Contract.Services.IContractTypeService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ContractTypesController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.CorporateDunsController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.CorporateDunsController.#ctor(ContractManager.Contract.Services.ICorporateDunsService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.CorporateDunsController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.CorporateLocationsController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.CorporateLocationsController.#ctor(ContractManager.Contract.Services.ICorporateLocationService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.CorporateLocationsController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.CountriesController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.CountriesController.#ctor(ContractManager.Contract.Services.ICountryService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.CountriesController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.DocumentsController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.DocumentsController.#ctor(ContractManager.Contract.Services.IDocumentService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.DocumentsController.Get(ContractManager.Contract.QueryFilters.DocumentQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.DocumentsController.Download(System.Int32)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.DocumentsController.Post(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="folderId"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.DocumentsController.Delete(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.ChangeMadesController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ChangeMadesController.#ctor(ContractManager.Contract.Services.IChangeMadeService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ChangeMadesController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.CompetitionsController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.CompetitionsController.#ctor(ContractManager.Contract.Services.ICompetitionService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.CompetitionsController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.HomeController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.HomeController.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.HomeController.Index">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.HomeController.Error">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.OrderModificationsController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.OrderModificationsController.#ctor(ContractManager.Contract.Services.IOrderModificationService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.OrderModificationsController.Get(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.OrderModificationsController.Get(ContractManager.Contract.QueryFilters.OrderModificationQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.OrderModificationsController.Post(ContractManager.Contract.Models.OrderModificationModel)">
+             <summary>
+            
+             </summary>
+             <param name="model"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.OrderModificationsController.Put(System.Int32,ContractManager.Contract.Models.OrderModificationModel,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <param name="model"></param>
+             <param name="section"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.OrderModificationsController.Delete(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.OrdersController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.OrdersController.#ctor(ContractManager.Contract.Services.IOrderService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.OrdersController.Get(ContractManager.Contract.QueryFilters.OrderQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.OrdersController.Get(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.OrdersController.Post(ContractManager.Contract.Models.OrderModel)">
+             <summary>
+            
+             </summary>
+             <param name="model"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.OrdersController.Put(System.Int32,ContractManager.Contract.Models.OrderModel,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <param name="model"></param>
+             <param name="section"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.OrdersController.Delete(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.OrderScopesController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.OrderScopesController.#ctor(ContractManager.Contract.Services.IOrderScopeService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.OrderScopesController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.OrderTypesController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.OrderTypesController.#ctor(ContractManager.Contract.Services.IOrderTypeService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.OrderTypesController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.PerformancePlacesController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.PerformancePlacesController.#ctor(ContractManager.Contract.Services.IPerformancePlaceService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.PerformancePlacesController.Get(ContractManager.Contract.QueryFilters.PerformanacePlaceQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.PerformancePlacesController.Post(ContractManager.Contract.Models.PerformancePlaceModel)">
+             <summary>
+            
+             </summary>
+             <param name="model"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.PerformancePlacesController.Put(System.Int32,ContractManager.Contract.Models.PerformancePlaceModel)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <param name="model"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.PerformancePlacesController.Delete(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.ProgramContactsController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramContactsController.#ctor(ContractManager.Contract.Services.IProgramContactsSearchService)">
+            <summary>
+            
+            </summary>
+            <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramContactsController.PrimeContractors(ContractManager.Contract.QueryFilters.GenericNameQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramContactsController.AwardingOffices(ContractManager.Contract.QueryFilters.GenericNameQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramContactsController.AwardingAgencies(ContractManager.Contract.QueryFilters.GenericNameQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramContactsController.DepartmentOfRecordsCoordinatores(ContractManager.Contract.QueryFilters.GenericNameQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramContactsController.InventoriedBies(ContractManager.Contract.QueryFilters.GenericNameQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.ProgramFoldersController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramFoldersController.#ctor(ContractManager.Contract.Services.IProgramFolderService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramFoldersController.Get(ContractManager.Contract.QueryFilters.ProgramFolderQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramFoldersController.Get(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramFoldersController.Post(ContractManager.Contract.Models.ProgramFolderModel)">
+             <summary>
+            
+             </summary>
+             <param name="model"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramFoldersController.Put(System.Int32,ContractManager.Contract.Models.ProgramFolderModel)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <param name="model"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramFoldersController.Delete(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.ProgramHistoriesController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramHistoriesController.#ctor(ContractManager.Contract.Services.Program.IProgramHistoryService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramHistoriesController.Get(ContractManager.Contract.QueryFilters.ProgramHistoryQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramHistoriesController.Post(ContractManager.Contract.Models.Program.ProgramHistoryModel)">
+             <summary>
+            
+             </summary>
+             <param name="model"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramHistoriesController.Put(System.Int32,ContractManager.Contract.Models.Program.ProgramHistoryModel)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <param name="model"></param>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.ProgramOwnersController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramOwnersController.#ctor(ContractManager.Contract.Services.IProgramOwnerService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramOwnersController.Post(ContractManager.Contract.Models.ProgramOwnerSummaryModel)">
+             <summary>
+            
+             </summary>
+             <param name="model"></param>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramOwnersController.Delete(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.ProgramPhasesController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramPhasesController.#ctor(ContractManager.Contract.Services.IProgramPhaseService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramPhasesController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.ProgramRolesController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramRolesController.#ctor(ContractManager.Contract.Services.IProgramRoleService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramRolesController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.ProgramsController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramsController.#ctor(ContractManager.Contract.Services.IProgramService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramsController.Get(ContractManager.Contract.QueryFilters.ProgramQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramsController.Dashboard">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramsController.Get(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramsController.Post(ContractManager.Contract.Models.ProgramModel)">
+             <summary>
+            
+             </summary>
+             <param name="model"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramsController.Put(System.Int32,ContractManager.Contract.Models.ProgramModel,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <param name="model"></param>
+             <param name="section"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ProgramsController.Delete(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.RegulationsController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.RegulationsController.#ctor(ContractManager.Contract.Services.IRegulationService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.RegulationsController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.ReportsController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ReportsController.#ctor(ContractManager.Contract.Services.IProgramReportService,ContractManager.Contract.Exporters.IProgramFinancialReportExporter,ContractManager.Contract.Exporters.IOrderPdfExporter,ContractManager.Contract.Exporters.IProgramPdfExporter,ContractManager.Contract.Services.IProgramOrderModificationsReportExporter,ContractManager.Contract.Exporters.IUsersExporter,ContractManager.Contract.Exporters.IProgramAggregateReportExporter)">
+             <summary>
+            
+             </summary>
+             <param name="programReportService"></param>
+             <param name="financialReportExporter"></param>
+             <param name="orderReportExporter"></param>
+             <param name="detailedReportExporter"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ReportsController.Get(ContractManager.Contract.QueryFilters.ProgramFinancialReportQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ReportsController.Get(ContractManager.Contract.QueryFilters.ProgramAggregateReportQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ReportsController.Xlsx(ContractManager.Contract.QueryFilters.OrderModificationQueryFilter)">
+            <summary>
+            Download  order modification report
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ReportsController.ProgramPdf(System.Int32)">
+            <summary>
+            Download detailed  program report
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ReportsController.OrderPdf(System.Int32)">
+            <summary>
+            Download  order report
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ReportsController.Aggregate(ContractManager.Contract.QueryFilters.ProgramAggregateReportQueryFilter)">
+            <summary>
+            Download  program aggrigate report
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ReportsController.Xlsx(ContractManager.Contract.QueryFilters.ProgramFinancialReportQueryFilter)">
+            <summary>
+            Download  program report financial data
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ReportsController.Xlsx(ContractManager.Contract.QueryFilters.UserQueryFilter)">
+            <summary>
+            Download  users report
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.RolesController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.RolesController.#ctor(ContractManager.Contract.Services.IRoleService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.RolesController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.ServiceOfferingsController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ServiceOfferingsController.#ctor(ContractManager.Contract.Services.IServiceOfferingService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ServiceOfferingsController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.ShowCauseCoreNoticesController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ShowCauseCoreNoticesController.#ctor(ContractManager.Contract.Services.Program.IShowCauseCoreNoticeService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ShowCauseCoreNoticesController.Get(System.Int32)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.ShowCauseCoreNoticesController.Put(System.Int32,ContractManager.Contract.Models.Program.ShowCauseCoreNoticeModel)">
+             <summary>
+            
+             </summary>
+             <param name="programId">program id</param>
+             <param name="model"></param>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.TermAndConditionsController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.TermAndConditionsController.#ctor(ContractManager.Contract.Services.Program.ITermAndConditionService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.TermAndConditionsController.Get(ContractManager.Contract.QueryFilters.TermAndConditionQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.TermAndConditionsController.Post(System.Collections.Generic.IList{ContractManager.Contract.Models.Program.TermAndConditionModel})">
+             <summary>
+            
+             </summary>
+             <param name="model"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.TermAndConditionsController.Put(System.Int32,ContractManager.Contract.Models.Program.TermAndConditionModel)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <param name="model"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.TermAndConditionsController.BulkDelete(System.Collections.Generic.List{System.Int32})">
+             <summary>
+            
+             </summary>
+             <param name="model"></param>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.TermsController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.TermsController.#ctor(ContractManager.Contract.Services.ITermService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.TermsController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.UsersController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.UsersController.#ctor(ContractManager.Contract.Services.IUserService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.UsersController.Get(ContractManager.Contract.QueryFilters.UserQueryFilter)">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.UsersController.Get(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.UsersController.Current">
+             <summary>
+            
+             </summary>
+             <param name="id">Current</param>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.UsersController.Post(ContractManager.Contract.Models.UserModel)">
+             <summary>
+            
+             </summary>
+             <param name="model"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.UsersController.Put(System.Int32,ContractManager.Contract.Models.UserModel)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <param name="model"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.UsersController.Delete(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+        </member>
+        <member name="T:ContractManager.Api.Controllers.UserTypesController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.UserTypesController.#ctor(ContractManager.Contract.Services.IUserTypeService)">
+             <summary>
+            
+             </summary>
+             <param name="service"></param>
+        </member>
+        <member name="M:ContractManager.Api.Controllers.UserTypesController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ContractManager.Api.Global.RegisterFilters(System.Web.Mvc.GlobalFilterCollection)">
+            <summary>
+            
+            </summary>
+            <param name="filters"></param>
+        </member>
+    </members>
+</doc>
