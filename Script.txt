@@ -1,0 +1,19 @@
+update corporatelocations set Name='SGS LLC, H1-2D-59 5400 Legacy Drive Plano,TX 75024' where TreePosition='ROOT_ABCK'
+update corporatelocations set Name='NHIC, 1775 Tysons Blvd.  Tysons, VA  22102' where TreePosition='ROOT_ABCL'
+
+
+
+update  p set CorporateLocation_Id=cl.Id  from Programs p join CageCodes c  on p.CageCode_id=c.Id join CorporateLocations cl on cl.TreePosition=c.TreePosition  where CageCode_Id is not null 
+
+update  p set CorporateDuns_Id=(select id from Corporatedunses where TreePosition='ROOT_ABCD')  from Programs p join CageCodes c  on p.CageCode_id=c.Id where c.TreePosition='ROOT_ABCD'
+update  p set CorporateDuns_Id=(select id from Corporatedunses where TreePosition='ROOT_ABCE')  from Programs p join CageCodes c  on p.CageCode_id=c.Id where c.TreePosition='ROOT_ABCE'
+update  p set CorporateDuns_Id=(select id from Corporatedunses where TreePosition='ROOT_ABCF')  from Programs p join CageCodes c  on p.CageCode_id=c.Id where c.TreePosition='ROOT_ABCF'
+update  p set CorporateDuns_Id=(select id from Corporatedunses where TreePosition='ROOT_ABCG')  from Programs p join CageCodes c  on p.CageCode_id=c.Id where c.TreePosition='ROOT_ABCG'
+update  p set CorporateDuns_Id=(select id from Corporatedunses where TreePosition='ROOT_ABCH')  from Programs p join CageCodes c  on p.CageCode_id=c.Id where c.TreePosition='ROOT_ABCH'
+update  p set CorporateDuns_Id=null  from Programs p join CageCodes c  on p.CageCode_id=c.Id where c.TreePosition='ROOT_ABCI'
+update  p set CorporateDuns_Id=null  from Programs p join CageCodes c  on p.CageCode_id=c.Id where c.TreePosition='ROOT_ABCJ'
+update  p set CorporateDuns_Id=(select id from Corporatedunses where TreePosition='ROOT_ABCG')  from Programs p join CageCodes c  on p.CageCode_id=c.Id where c.TreePosition='ROOT_ABCK'
+update  p set CorporateDuns_Id=(select id from Corporatedunses where TreePosition='ROOT_ABCH')  from Programs p join CageCodes c  on p.CageCode_id=c.Id where c.TreePosition='ROOT_ABCL'
+
+
+
