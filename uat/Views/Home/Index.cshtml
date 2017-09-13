@@ -1,0 +1,14 @@
+﻿@using ContractManager.Contract.Models
+@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@model UserSummaryModel
+<script>
+var model=
+    window.localStorage.setItem("user", '@Html.Raw(@JsonConvert.SerializeObject(Model, new JsonSerializerSettings
+{
+    ContractResolver = new CamelCasePropertyNamesContractResolver()
+}))');
+</script>
+
+@Html.Raw(File.ReadAllText(Server.MapPath("~/index.html")))
+
